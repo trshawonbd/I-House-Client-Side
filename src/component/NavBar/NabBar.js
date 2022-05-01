@@ -15,9 +15,9 @@ const NabBar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto nav-list">
-                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/home'>Home</Nav.Link>
-                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/item'>Items</Nav.Link>
-                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/about'>About</Nav.Link>
+                            <Nav.Link as={Link} className= 'item' to='/home'>Home</Nav.Link>
+                            <Nav.Link as={Link} className= 'item' to='/item'>Items</Nav.Link>
+                            <Nav.Link as={Link} className= 'item' to='/about'>About</Nav.Link>
                             <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/contact'>Contact</Nav.Link>
                             <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/login'>Login</Nav.Link>
                         </Nav>
