@@ -28,7 +28,7 @@ const Footer = () => {
                         </div>
                         <div class="col-md-6 item text-footer">
                             <h3>Md Taibur Rahman</h3>
-                            <p className=''>I would like to meet and get to know you in advance. Let's talk about everything related to photography on the wedding day. I will share my recommendations at the meeting and give advice based on my past experience.</p>
+                            <p className='text-justify'>I-House would like to meet and get to know you in advance. Let's talk about everything related to Tech on the daily activities. We will share our recommendations at the meeting and give advice based on our past experience.</p>
                         </div>
                     </div>
                     <p class="copyright">I-House ©  {year}</p>
