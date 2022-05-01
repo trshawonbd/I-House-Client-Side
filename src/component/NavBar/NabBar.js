@@ -1,25 +1,31 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
+import logo from '../../img/logo.png';
+import { Link } from 'react-router-dom';
 
 const NabBar = () => {
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg">
+                <Container className='items'>
+                    <Navbar.Brand href="#home">
+                        <img className='logo' src={logo} alt="" srcset="" />
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="#features">Features</Nav.Link>
-                            <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav className="mx-auto nav-list">
+                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/home'>Home</Nav.Link>
+                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/item'>Items</Nav.Link>
+                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/about'>About</Nav.Link>
+                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/contact'>Contact</Nav.Link>
+                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/login'>Login</Nav.Link>
                         </Nav>
-                        <Nav>
-                            <Nav.Link href="#deets">More deets</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
-                            </Nav.Link>
-                        </Nav>
+
+
+
+
+
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

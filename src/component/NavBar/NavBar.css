@@ -1,0 +1,61 @@
+
+.logo{
+    height: 50px;
+}
+/* 
+Nav .nav-list{
+    font-weight: 500;
+    font-size: 16px;
+    font-family: sans;
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 20px;
+    color: black;
+    transition: color ease-in-out 300ms;
+  }
+
+.selected-item {
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: color ease-in-out 300ms;
+    color: crimson;
+  } */
+
+  Nav .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: Sans;
+    width: 64px;
+    height: 28px;
+}
+.link:hover{
+  color: crimson;
+}
+
+.link {
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 20px;
+    color: black;
+    transition: color ease-in-out 300ms;
+  }
+
+.active-link {
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: color ease-in-out 300ms;
+    color: crimson;
+  }
