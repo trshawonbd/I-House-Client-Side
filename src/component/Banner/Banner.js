@@ -17,8 +17,8 @@ const Banner = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3 className='carousel-title'>Iphones</h3>
-                    <p className='carousel-title'>Love the power.
+                    <h3 className='carousel-title-odds'>Iphones</h3>
+                    <p className='carousel-title-odds'>Love the power.
                         Love the price.</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -43,8 +43,8 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3 className='carousel-title'>Full screen ahead</h3>
-                    <p className='carousel-title'>Heavy on features.
+                    <h3 className='carousel-title-odds'>Full screen ahead</h3>
+                    <p className='carousel-title-odds-des'>Heavy on features.
                         Light on price.</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -68,8 +68,8 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3 className='carousel-title'>Mac Studio</h3>
-                    <p className='carousel-title'>Incredible power.
+                    <h3 className='carousel-title-odds'>Mac Studio</h3>
+                    <p className='carousel-title-odds'>Incredible power.
                         Incredibly simple.</p>
                 </Carousel.Caption>
             </Carousel.Item>
