@@ -3,7 +3,7 @@ import './Items.css';
 
 const Items = () => {
     return (
-        <div className='container'>
+        <div className='container font'>
             <h2 className='my-4'>Items</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">

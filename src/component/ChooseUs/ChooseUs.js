@@ -6,7 +6,7 @@ import choose2 from '../../img/choose/choose2.svg';
 const ChooseUs = () => {
     return (
 
-        <div className='container'>
+        <div className='container font'>
             <div className='what-section'>
                 <h1 className='my-4'>What is I-House?</h1>
                 <div>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const NabBar = () => {
     return (
-        <div>
+        <div >
             <Navbar collapseOnSelect expand="lg">
                 <Container className='items'>
                     <Navbar.Brand href="#home">

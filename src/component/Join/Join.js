@@ -6,7 +6,7 @@ import number3 from '../../img/number/three.png';
 
 const Join = () => {
     return (
-        <div className='text-center container'>
+        <div className='text-center container font'>
             <h2 className='my-4'>Join <span className='title'>I</span>-H<span className='title'>o</span>u<span className='title'>s</span>e Today</h2>
             <p className='text-center text'>Explore the world of Gadget Flow so you know when any new tech launches—anywhere. Create your account using your email or any of our supported third-party logins, such as Google, Apple, and Facebook.</p>
 
