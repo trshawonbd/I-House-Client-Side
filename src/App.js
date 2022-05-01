@@ -8,13 +8,13 @@ import Contact from './component/Contact/Contact';
 import Login from './component/Login/Login';
 import Footer from './component/Footer/Footer';
 import NotFound from './component/Shared/NotFound/NotFound';
-import Loading from './component/Shared/Loading/Loading';
+import Register from './component/Register/Register';
 
 function App() {
   return (
     <div className="App">
       <NabBar></NabBar>
-      <Loading></Loading>
+      
       <Routes>
         <Route path='/' element = {<Home></Home>}></Route>
         <Route path='/home' element = {<Home></Home>}></Route>
@@ -22,9 +22,10 @@ function App() {
         <Route path='/about' element = {<About></About>}></Route>
         <Route path='/contact' element = {<Contact></Contact>}></Route>
         <Route path='/login' element = {<Login></Login>}></Route>
+        <Route path='/register' element = {<Register></Register>}></Route>
         <Route path='*' element = {<NotFound></NotFound>}></Route>
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

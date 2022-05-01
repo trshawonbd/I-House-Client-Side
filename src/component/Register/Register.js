@@ -1,16 +1,15 @@
 import React from 'react';
-import './Login.css';
-import login from '../../img/Login/login.gif';
-import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Social from '../Shared/Social/Social';
+import './Register.css';
+import register from '../../img/Login/register.png'
 
-const Login = () => {
+const Register = () => {
     return (
         <div className='font background'>
             <div>
                 <div className='d-flex justify-content-center align-items-center'>
-                    <img className='img-fluid login-img' src= {login} alt="" srcset="" />
+                    <img className='img-fluid login-img' src= {register} alt="" srcset="" />
                 </div>
                 
                 <div>
@@ -21,9 +20,11 @@ const Login = () => {
                         <br  />
                         <input className='password' type="password" name="password" id="" placeholder='Password' required />
                         <br />
-                        <p>You don't have any account? <Link className='login-text' to='/register'>Register</Link> </p>
-                        <p>Forget Password? <button className='btn-reset' ><span className='sign'>Reset Password</span> </button> </p>
-                        <input className='login' type="submit" value="Login" />
+                        <input className='password' type="password" name="confirmPassword" id="" placeholder='Confirm Password' required />
+                        <br />
+                        <p>You have already  any account? <Link className='login-text' to='/login'>Login</Link> </p>
+                        
+                        <input className='login' type="submit" value="Register" />
                     </form>
                 </div>
                 <div className='d-flex justify-content-center align-items-center'>
@@ -42,4 +43,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

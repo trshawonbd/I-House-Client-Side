@@ -3,8 +3,17 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import './NavBar.css';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const NabBar = () => {
+    const [user] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+      };
+
     return (
         <div >
             <Navbar collapseOnSelect expand="lg">
@@ -18,8 +27,13 @@ const NabBar = () => {
                             <Nav.Link as={Link} className= 'item' to='/home'>Home</Nav.Link>
                             <Nav.Link as={Link} className= 'item' to='/item'>Items</Nav.Link>
                             <Nav.Link as={Link} className= 'item' to='/about'>About</Nav.Link>
-                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/contact'>Contact</Nav.Link>
-                            <Nav.Link as={Link} className={({ selected }) => (selected ? 'selected-item' : 'item')} to='/login'>Login</Nav.Link>
+                            <Nav.Link as={Link} className= 'item' to='/contact'>Contact</Nav.Link>
+
+                            {
+                                user ?  <button className='item' onClick={logout}>Log out</button> : 
+                                <Nav.Link as={Link} className= 'item' to='/login'>Login</Nav.Link>
+                            }
+                            
                         </Nav>
 
 
