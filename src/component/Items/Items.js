@@ -3,8 +3,8 @@ import './Items.css';
 
 const Items = () => {
     return (
-        <div className='my-4'>
-            <h2>Items</h2>
+        <div className='container'>
+            <h2 className='my-4'>Items</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="card h-100">
@@ -43,11 +43,6 @@ const Items = () => {
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
     );
 };
