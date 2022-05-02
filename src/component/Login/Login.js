@@ -7,11 +7,18 @@ import Social from '../Shared/Social/Social';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const Login = () => {
     const location = useLocation();
-    const navigate = useNavigate();
-    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate(); 
+    
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
     let from = location.state?.from?.pathname || "/";
     if (error) {
         return (
@@ -27,6 +34,15 @@ const Login = () => {
         navigate(from, { replace: true });
       }
 
+      const handleLogin = event =>{
+          event.preventDefault();
+          const email = event.target.email.value;
+          const password = event.target.password.value;
+
+          signInWithEmailAndPassword(email, password)
+          event.target.reset();
+      }
+
     return (
         <div className='font background'>
             <div>
@@ -36,7 +52,7 @@ const Login = () => {
                 
                 <div>
                     <h3 className='login-title'>Login</h3>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         
                         <input className='email' type="email" name="email" id="" placeholder='Email' required />
                         <br  />
