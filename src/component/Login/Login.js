@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Login.css';
 import login from '../../img/Login/login.gif';
 import { Form } from 'react-bootstrap';
@@ -8,8 +8,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
+    const emailRef = useRef('');
     const location = useLocation();
     const navigate = useNavigate(); 
     
@@ -19,15 +22,19 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+      
+      const [sendPasswordResetEmail, resetSending, resetError] = useSendPasswordResetEmail(
+        auth
+      );
     let from = location.state?.from?.pathname || "/";
-    if (error) {
+    if (error || resetError) {
         return (
           <div>
             <p>Error: {error.message}</p>
           </div>
         );
       }
-      if (loading) {
+      if (loading || resetSending) {
         return <Loading></Loading>
       }
       if (user) {
@@ -43,6 +50,18 @@ const Login = () => {
           event.target.reset();
       }
 
+      const resetPassword = async(event) => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else{
+            toast('please enter your email address');
+        }
+
+    }
+
     return (
         <div className='font background'>
             <div>
@@ -54,14 +73,17 @@ const Login = () => {
                     <h3 className='login-title'>Login</h3>
                     <form onSubmit={handleLogin}>
                         
-                        <input className='email' type="email" name="email" id="" placeholder='Email' required />
+                        <input ref={emailRef} className='email' type="email" name="email" id="" placeholder='Email' required />
                         <br  />
                         <input className='password' type="password" name="password" id="" placeholder='Password' required />
                         <br />
-                        <p>You don't have any account? <Link className='login-text' to='/register'>Register</Link> </p>
-                        <p>Forget Password? <button className='btn-reset' ><span className='sign'>Reset Password</span> </button> </p>
+
                         <input className='login' type="submit" value="Login" />
                     </form>
+                    <p>You don't have any account? <Link className='login-text' to='/register'>Register</Link> </p>
+                    <p>Forget Password? <button  
+                         onClick={resetPassword}
+                        className='btn-reset' ><span className='sign'>Reset Password</span> </button> </p>
                 </div>
                 <div className='d-flex justify-content-center align-items-center'>
                 <span className='hr-dividor'>
@@ -71,6 +93,7 @@ const Login = () => {
                 </span>
                 </div>
                 <Social></Social>
+                <ToastContainer></ToastContainer>
 
 
             </div>

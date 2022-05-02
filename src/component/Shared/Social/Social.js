@@ -6,6 +6,8 @@ import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+
+
 const Social = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
@@ -13,7 +15,7 @@ const Social = () => {
 
     let from = location.state?.from?.pathname || "/";
 
-    if (error) {
+    if (error ) {
       return (
         <div>
           <p>Error: {error.message}</p>
