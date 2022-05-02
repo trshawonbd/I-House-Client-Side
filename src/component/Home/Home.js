@@ -2,9 +2,11 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import ChooseUs from '../ChooseUs/ChooseUs';
 import Features from '../Features/Features';
+import Footer from '../Footer/Footer';
 import Items from '../Items/Items';
 import Join from '../Join/Join';
 import './Home.css';
+
 
 const Home = () => {
     return (
@@ -14,6 +16,7 @@ const Home = () => {
             <ChooseUs></ChooseUs>
             <Join></Join>
             <Features></Features>
+            <Footer></Footer>
             
         </div>
     );

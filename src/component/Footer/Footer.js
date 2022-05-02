@@ -9,7 +9,7 @@ const Footer = () => {
             <footer>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6 col-md-3 item">
+                        <div class="col-sm-6 col-md-3 items">
                             <h3>Services</h3>
                             <ul>
                                 <li>Phone</li>
@@ -18,7 +18,7 @@ const Footer = () => {
                                 <li>IPod</li>
                             </ul>
                         </div>
-                        <div class="col-sm-6 col-md-3 item">
+                        <div class="col-sm-6 col-md-3 items">
                             <h3>About</h3>
                             <ul>
                                 <li>About</li>
@@ -26,9 +26,9 @@ const Footer = () => {
                                 <li>Goal</li>
                             </ul>
                         </div>
-                        <div class="col-md-6 item text-footer">
+                        <div class="col-md-6 items text-footer">
                             <h3>Md Taibur Rahman</h3>
-                            <p className='text-justify'>I-House would like to meet and get to know you in advance. Let's talk about everything related to Tech on the daily activities. We will share our recommendations at the meeting and give advice based on our past experience.</p>
+                            <p className=''>I-House would like to meet and get to know you in advance. Let's talk about everything related to Tech on the daily activities. We will share our recommendations at the meeting and give advice based on our past experience.</p>
                         </div>
                     </div>
                     <p class="copyright">I-House ©  {year}</p>

@@ -6,10 +6,11 @@ import Items from './component/Items/Items';
 import About from './component/About/About';
 import Contact from './component/Contact/Contact';
 import Login from './component/Login/Login';
-import Footer from './component/Footer/Footer';
 import NotFound from './component/Shared/NotFound/NotFound';
 import Register from './component/Register/Register';
 import RequireAuth from './component/RequireAuth/RequireAuth';
+import ManageInventory from './component/ManageInventory/ManageInventory';
+import AddItem from './component/AddItem/AddItem';
 
 function App() {
   return (
@@ -19,9 +20,19 @@ function App() {
       <Routes>
         <Route path='/' element = {<Home></Home>}></Route>
         <Route path='/home' element = {<Home></Home>}></Route>
-        <Route path='/item' element = {
+        <Route path='/inventory' element = {
         <RequireAuth>
           <Items></Items>
+        </RequireAuth>
+        }></Route>
+        <Route path='/manageInventory' element = {
+        <RequireAuth>
+          <ManageInventory></ManageInventory>
+        </RequireAuth>
+        }></Route>
+        <Route path='/addItem' element = {
+        <RequireAuth>
+          <AddItem></AddItem>
         </RequireAuth>
         }></Route>
         <Route path='/about' element = {<About></About>}></Route>
@@ -30,7 +41,7 @@ function App() {
         <Route path='/register' element = {<Register></Register>}></Route>
         <Route path='*' element = {<NotFound></NotFound>}></Route>
       </Routes>
-      {/* <Footer></Footer> */}
+        
     </div>
   );
 }
