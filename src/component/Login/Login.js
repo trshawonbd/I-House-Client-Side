@@ -2,10 +2,31 @@ import React from 'react';
 import './Login.css';
 import login from '../../img/Login/login.gif';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Social from '../Shared/Social/Social';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [user, loading, error] = useAuthState(auth);
+    let from = location.state?.from?.pathname || "/";
+    if (error) {
+        return (
+          <div>
+            <p>Error: {error.message}</p>
+          </div>
+        );
+      }
+      if (loading) {
+        return <Loading></Loading>
+      }
+      if (user) {
+        navigate(from, { replace: true });
+      }
+
     return (
         <div className='font background'>
             <div>
