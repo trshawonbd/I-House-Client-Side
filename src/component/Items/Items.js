@@ -1,48 +1,41 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import useItem from '../Hooks/useItem';
+import Item from '../Item/Item';
 import './Items.css';
 
 const Items = () => {
+    const [item,setItem] = useItem([]);
+    
+    const shuffled = item.sort(() => 0.5 - Math.random());
+    console.log(shuffled)
+     const sliceItems = shuffled.slice(0,6); 
+    const navigate = useNavigate();
+
+    const handleUpdate = id =>{
+        const url= `http://localhost:5000/item/${id}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            setItem(data);
+            navigate(`/item/${id}`);
+        })
+    }
     return (
         <div className='container font'>
             <h2 className='my-4'>Items</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="..."/>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="..."/>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a short card.</p>
-                            </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="..."/>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="..."/>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                    </div>
-                </div>
+            
+            <div className="row  row-cols-1 row-cols-md-3 g-4">
+                {
+                    sliceItems.map((item) => <Item
+                    key={item._id}
+                    products={item}
+                    handleUpdate = {handleUpdate}
+                    ></Item>
+                    )
+                } 
             </div>
+            
         </div>
     );
 };

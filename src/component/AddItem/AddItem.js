@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import './AddItem.css';
 
 const AddItem = () => {
@@ -56,7 +56,9 @@ const AddItem = () => {
                 
 
                 <input className='login' type="submit" value="Add Item" />
+                <ToastContainer></ToastContainer>
             </form>
+            
         </div>
     );
 };

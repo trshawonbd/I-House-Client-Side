@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import useItem from '../Hooks/useItem';
 import ManageSingleItem from '../ManageSingleItem/ManageSingleItem';
 import './ManageInventory.css';
 
@@ -40,7 +39,8 @@ const ManageInventory = () => {
                     key={item._id}
                     item={item}
                     handleItemDelete = {handleItemDelete}
-                    ></ManageSingleItem>)
+                    ></ManageSingleItem>
+                    )
                 }
             </div>
         </div>
