@@ -40,25 +40,27 @@ const Login = () => {
         return <Loading></Loading>
       }
       if (user) {
-        
+        navigate(from, { replace: true });
       }
 
       const handleLogin = async event =>{
           event.preventDefault();
- 
-
-            if(error){
+          const email = event.target.email.value;
+          const password = event.target.password.value;
+          await signInWithEmailAndPassword(email, password);
+          event.target.reset();
+            /* if(error){
                 toast('fskn')
-            }
-            else{
+            } */
+            /* else{
               const email = event.target.email.value;
               const password = event.target.password.value;
               await signInWithEmailAndPassword(email, password);
-              const {data} = await axios.post(`https://intense-tor-77999.herokuapp.com/login`, {email});
+              /* const {data} = await axios.post(`http://localhost:5000/login`, {email}); 
               localStorage.setItem('accessToken', data.accessToken);
               navigate(from, { replace: true });
               event.target.reset();
-            }
+            } */
             
           
           

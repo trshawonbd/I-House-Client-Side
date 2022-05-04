@@ -13,26 +13,26 @@ const MyItems = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const email = user?.email;
-        const url = `https://intense-tor-77999.herokuapp.com/myItem?email=${email}`;
-        try{
-            fetch(url,
+        const url = `http://localhost:5000/myItem?email=${email}`;
+        /* try{ */
+            fetch(url/* ,
                 {
                     headers: {
                         authorization : `Bearer ${localStorage.getItem('accessToken')}`
                     }
-                })
+                }*/) 
             .then(res => res.json())
             .then(data => setItems(data))
 
         }
-        catch(error){
+        /* catch(error){
             console.log(error.message);
             if(error.response.status === 401 || error.response.status ===403){
                 signOut(auth);
                 navigate('/login');
-            }
+            } 
         }
-    }, [user])
+    }*/, [user])
     console.log(items, setItems)
     
 
@@ -40,7 +40,7 @@ const MyItems = () => {
         const confirmation = window.confirm('Are you sure to delete this item?');
         
         if(confirmation){
-            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
+            const url = `http://localhost:5000/item/${id}`;
             fetch (url, {
                 method: 'DELETE',
             })
@@ -56,7 +56,7 @@ const MyItems = () => {
 
     return (
         <div className='container font'>
-            <h2 className='my-4'>Manage Inventory</h2>
+            <h2 className='my-4'>My Items</h2>
             <div className="row  row-cols-1 row-cols-md-3 g-4">
                 {
                     items.map((item) => <DisplayMyItem 

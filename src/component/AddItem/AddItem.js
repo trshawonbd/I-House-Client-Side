@@ -23,7 +23,7 @@ const AddItem = () => {
         const product = {email, productName, price, quantity, image, supplier, description};
 
         console.log(product);
-        const url = `https://intense-tor-77999.herokuapp.com/item`;
+        const url = `http://localhost:5000/item`;
         fetch(url, {
             method: 'POST',
             headers : {
