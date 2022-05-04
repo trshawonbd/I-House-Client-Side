@@ -1,126 +1,223 @@
 import { async } from '@firebase/util';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import useItem from '../Hooks/useItem';
 import './ItemDetail.css';
 
 const ItemDetail = () => {
     const [serviceDetail, setServiceDetail] = useState({});
-    const [newState, setNewState] = useState(0);
     
- 
+    const quantityRef = useRef('');
+
+
     const param = useParams();
-    const {id} = param;
-    const {_id, productName, price, quantity, image, supplier, description} = serviceDetail;
-
-     const num = parseInt(quantity);
-
-
-    useEffect(() =>{
+    const { id } = param;
+    const {_id} = serviceDetail
+    let { productName, price, quantity, image, supplier, description } = serviceDetail;
+    useEffect(() => {
+        
         const url = `http://localhost:5000/item/${id}`;
         fetch(url)
-        .then(res => res.json())
-        .then(data => setServiceDetail(data))
-    }  
-    ,[id, newState])
+            .then(res => res.json())
+            .then(data => setServiceDetail(data),
+            
+            
+            )
+            
+    }
+    
+        , [id,quantity])
+        
+
+        
+     const handleDelivered = (id) => {
+        
+        /* quantity =newState */
+        
+        
+        const newQuantity = (quantity - 1);
+        
+        
+
+        if (newQuantity >= 0) {
+            /* setNewState(newQuantity) */
+            const newService = {...serviceDetail, quantity: newQuantity}
+            setServiceDetail(newService);
+            
+            /* const updateQuantity = { quantity : newQuantity}; */
+            
+            
+            const url = `http://localhost:5000/item/${id}`;
+
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newService),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                }) 
 
 
-    const handleDelivered = (id) =>{
-        
-        const available =(num - 1);
-        
-        if(available > 0){
-            const updateQuantity = {quantity :  (available)};
-             setNewState(updateQuantity)
-        const url = `http://localhost:5000/item/${id}`;
-        
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
+        }
+        else{
+            toast(`${productName} is sold out`);
+        }
+
+    } 
+
+/*     const handleRestockQuantity =  (id) => { 
+        const getQuantity = quantityRef.current.value;
+        const quantityInInt = parseInt(getQuantity);
+        console.log(addQuantity)
+        const quantity = addQuantity + quantityInInt;
+
+        if(quantity > 0){
+            const updateQuantity = {quantity};
+           setNewState(updateQuantity);
+           console.log(newState)
+           const url = `http://localhost:5000/item/${id}`;
+
+           fetch(url, {
+               method: "PUT",
+               headers: {'Content-Type': 'application/json',
             },
             body: JSON.stringify(updateQuantity),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);              
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            })
             
+           })
 
-}
-    
-/* 
-    const handleDelivered = (id) =>{
-        console.log(id)
-        const availble = quantityInInteger-1;
-        if(availble > 0){
-            const updateQuantity = {_id, productName, price, quantity:availble, image, supplier, description}
-        console.log(updateQuantity)
-        const url = `http://localhost:5000/item/${id}`;
-        fetch(url, {
-            method: 'PUT',
-            headers : {
-                'content-type':'application/json',
-            },
-            body : JSON.stringify(updateQuantity),
-        } )
-        .then(response => response.json())
-        .then(data =>{ if (data.modifiedCount > 0) {
-            const rest = items.filter(item => item._id !== id)
-            setItems(rest);
-            console.log('suceess:', data)
-            toast('Item is delivered');
-        } */
-            
-            
-        /*     
+           .then(response => response.json())
+           .then(data => {
+            console.log('Success:', data);
+        
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
+        })
         }
         else{
-            toast('You have not enough item available to deliver');
+            toast("Please add atlease 1 quantity to restock")
         }
-         
-        */
+        quantityRef.current.value = '';
+
+    } */
+/*     const handleDelivered = (id) => {
+
+        const newQuantity = (quantity - 1);
+
+        if (quantity > 0) {
+            
+            const updateQuantity = { quantity : newQuantity};
+            setNewState(updateQuantity)
+            const url = `http://localhost:5000/item/${id}`;
+
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updateQuantity),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                })
+
+
+        }
 
     }
-        return (
-            <div className="card mb-3 container font" >
+
+    const handleRestockQuantity =  (id) => { 
+        const getQuantity = quantityRef.current.value;
+        const quantityInInt = parseInt(getQuantity);
+        console.log(addQuantity)
+        const quantity = addQuantity + quantityInInt;
+
+        if(quantity > 0){
+            const updateQuantity = {quantity};
+           setNewState(updateQuantity);
+           console.log(newState)
+           const url = `http://localhost:5000/item/${id}`;
+
+           fetch(url, {
+               method: "PUT",
+               headers: {'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updateQuantity),
+            
+           })
+
+           .then(response => response.json())
+           .then(data => {
+            console.log('Success:', data);
+        
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
+        }
+        else{
+            toast("Please add atlease 1 quantity to restock")
+        }
+        quantityRef.current.value = '';
+
+    } */
+
+
+    return (
+        <div className="card mb-3 container font" >
             <div className="row g-4">
                 <div className="col-md-4 d-flex align-items-center ">
                     <img src={image} className="img-fluid" alt="..." />
 
                 </div>
-                <div className="col-md-8">
-                <div className="card-body">
-                    <h3 className="card-title">{productName}</h3>
-                    <hr />
-                    <h4 className='card-price'>Price: ${price}</h4>
-                    <hr />
-                    <h5 className='card-quantity'>Quantity: {quantity}</h5>
-                    <hr />
-                    <h5 className='card-supplier'>Supplier: <span className='supplier'>{supplier}</span></h5>
-                    <hr />
+                <div className="col-md-4">
+                    <div className="card-body">
+                        <h3 className="card-title">{productName}</h3>
+                        <hr />
+                        <h4 className='card-price'>Price: ${price}</h4>
+                        <hr />
+                        <h5 className='card-quantity'>Quantity: {quantity}</h5>
+                        <hr />
+                        <h5 className='card-supplier'>Supplier: <span className='supplier'>{supplier}</span></h5>
+                        <hr />
 
-                    <p className="card-text">{description} </p>
-                    
-            
-                    <hr />
-                    <button    onClick={() => handleDelivered(_id)}   className='login'>Delivered</button>
-                    <ToastContainer></ToastContainer>
+                        <p className="card-text">{description} </p>
+
+
+                        <hr />
+                        <button  onClick={() => handleDelivered(_id)}  className='login'>Delivered</button>
+                        <ToastContainer></ToastContainer>
+                    </div>
+
+
                 </div>
-                   
+                <div className="col-md-4">
+                    <h3 className='my-4 card-title'>Restock Your: {productName}</h3>
+                    <hr />
+                    <div>
+                        <input className='email' ref={quantityRef} type="text" name="quantity" id="" placeholder='Quantity' required />
+                        <br />
+                        <button /* onClick={() => handleRestockQuantity(_id)} */ className='login' type="submit" value="Restock Quantity">Restock Quantity</button>
+                        <ToastContainer></ToastContainer>
+                    </div>
+
 
                 </div>
             </div>
         </div>
-        );
-    };
+    );
+};
 
-    export default ItemDetail;
+export default ItemDetail;

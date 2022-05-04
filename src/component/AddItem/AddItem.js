@@ -42,9 +42,9 @@ const AddItem = () => {
             <form onSubmit={handleAddItem}>
                 <input className='email' type="text" name="productName" id="" placeholder='Product Name' required />
                 <br />
-                <input className='email' type="number" name="price" id="" placeholder='Price' required />
+                <input className='email' type="text" name="price" id="" placeholder='Price' required />
                 <br />
-                <input className='email' type="number" name="quantity" id="" placeholder='Quantity' required />
+                <input className='email' type="text" name="quantity" id="" placeholder='Quantity' required />
                 <br />
                 <input className='password' type="text" name="image" id="" placeholder='Image Link' required />
                 <br />
