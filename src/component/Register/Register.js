@@ -7,6 +7,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import { toast, ToastContainer } from 'react-toastify';
+import useToken from '../Hooks/useToken';
 
 
 
@@ -18,6 +19,8 @@ const Register = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+      const [token] = useToken(user);
+
       const navigate = useNavigate();
       const location = useLocation();
       let from = location.state?.from?.pathname || "/";
@@ -34,7 +37,7 @@ const Register = () => {
       if (loading || updating) {
         return <Loading></Loading>;
       }
-      if (user) {
+      if (token) {
         navigate(from, { replace: true });;
       }
 

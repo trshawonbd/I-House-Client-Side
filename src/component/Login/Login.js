@@ -11,6 +11,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import useToken from '../Hooks/useToken';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -23,6 +24,7 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+      const [token] = useToken(user);
       let errorContainer;
       const [sendPasswordResetEmail, resetSending, resetError] = useSendPasswordResetEmail(
         auth
@@ -39,8 +41,8 @@ const Login = () => {
       if (loading || resetSending) {
         return <Loading></Loading>
       }
-      if (user) {
-        //navigate(from, { replace: true });
+      if (token) {
+        navigate(from, { replace: true });
       }
 
       const handleLogin = async event =>{
@@ -48,27 +50,8 @@ const Login = () => {
           const email = event.target.email.value;
           const password = event.target.password.value;
           await signInWithEmailAndPassword(email, password);
-          const {data} = await axios.post(`https://intense-tor-77999.herokuapp.com/login`, {email});
-          console.log(data);
-          localStorage.setItem('accessToken', data.accessToken);
-          navigate(from, { replace: true });
-          event.target.reset();
-            /* if(error){
-                toast('fskn')
-            } */
-            /* else{
-              const email = event.target.email.value;
-              const password = event.target.password.value;
-              await signInWithEmailAndPassword(email, password);
-              /* const {data} = await axios.post(`https://intense-tor-77999.herokuapp.com/login`, {email}); 
-              localStorage.setItem('accessToken', data.accessToken);
-              navigate(from, { replace: true });
-              event.target.reset();
-            } */
-            
-          
-          
 
+          event.target.reset();
 
       }
 
