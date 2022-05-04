@@ -73,17 +73,49 @@ const ItemDetail = () => {
 
     } 
 
-/*     const handleRestockQuantity =  (id) => { 
+    const handleRestockQuantity =  (id) => { 
         const getQuantity = quantityRef.current.value;
         const quantityInInt = parseInt(getQuantity);
-        console.log(addQuantity)
-        const quantity = addQuantity + quantityInInt;
+        console.log(quantityInInt)
+        const newQuantity = quantity + quantityInInt;
+        console.log(newQuantity);
 
+        if (newQuantity >0){
+            const newService = {...serviceDetail, quantity : newQuantity};
+            setServiceDetail(newService);
+            
+            const url = `http://localhost:5000/item/${id}`;
+
+            fetch(url, {
+                method: "PUT",
+                headers: {'Content-Type': 'application/json',
+             },
+             body: JSON.stringify(newService),
+             
+            })
+ 
+            .then(response => response.json())
+            .then(data => {
+             console.log('Success:', data);
+         
+         })
+         .catch((error) => {
+             console.error('Error:', error);
+         })
+         }
+         else{
+             toast("Please add atlease 1 quantity to restock")
+         }
+         quantityRef.current.value = '';
+ 
+        
+    }
+/* 
         if(quantity > 0){
             const updateQuantity = {quantity};
            setNewState(updateQuantity);
-           console.log(newState)
-           const url = `http://localhost:5000/item/${id}`;
+           console.log(newState) */
+      /*      const url = `http://localhost:5000/item/${id}`;
 
            fetch(url, {
                method: "PUT",
@@ -107,7 +139,7 @@ const ItemDetail = () => {
         }
         quantityRef.current.value = '';
 
-    } */
+    }  */
 /*     const handleDelivered = (id) => {
 
         const newQuantity = (quantity - 1);
@@ -209,7 +241,7 @@ const ItemDetail = () => {
                     <div>
                         <input className='email' ref={quantityRef} type="text" name="quantity" id="" placeholder='Quantity' required />
                         <br />
-                        <button /* onClick={() => handleRestockQuantity(_id)} */ className='login' type="submit" value="Restock Quantity">Restock Quantity</button>
+                        <button  onClick={() => handleRestockQuantity(_id)}  className='login' type="submit" value="Restock Quantity">Restock Quantity</button>
                         <ToastContainer></ToastContainer>
                     </div>
 
