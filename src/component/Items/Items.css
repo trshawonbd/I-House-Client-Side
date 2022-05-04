@@ -1,0 +1,8 @@
+.inventoryNavigate{
+    text-decoration:none;
+    color: white;
+}
+
+.inventoryNavigate:hover{
+    color: white !important;
+}

@@ -1,6 +1,6 @@
 import { async } from '@firebase/util';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import './ItemDetail.css';
 
@@ -247,6 +247,10 @@ const ItemDetail = () => {
 
 
                 </div>
+            </div>
+            
+            <div className='my-4 manage '>
+                <button className='login '><Link className='inventoryNavigate' to = '/manageInventory'>Manage Inventory</Link></button>
             </div>
         </div>
     );

@@ -1,0 +1,5 @@
+.manage{
+    display: flex;
+    justify-content: flex-end !important;
+    align-items: center;
+}

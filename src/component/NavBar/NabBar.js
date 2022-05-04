@@ -25,8 +25,15 @@ const NabBar = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto nav-list">
                             <Nav.Link as={Link} className= 'item' to='/home'>Home</Nav.Link>
-                            <Nav.Link as={Link} className= 'item' to='/manageInventory'>Manage Inventory</Nav.Link>
-                            <Nav.Link as={Link} className= 'item' to='/addItem'>Add Items</Nav.Link>
+                            {
+                                user && <>
+                                <Nav.Link as={Link} className= 'item' to='/manageInventory'>Manage Inventory</Nav.Link>
+                                <Nav.Link as={Link} className= 'item' to='/addItem'>Add Items</Nav.Link>
+                                <Nav.Link as={Link} className= 'item' to='/myItems'>My Items</Nav.Link>
+                                </>
+
+                            }
+
                             <Nav.Link as={Link} className= 'item' to='/about'>About</Nav.Link>
                             <Nav.Link as={Link} className= 'item' to='/contact'>Contact</Nav.Link>
 

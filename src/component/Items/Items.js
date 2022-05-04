@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useItem from '../Hooks/useItem';
 import Item from '../Item/Item';
 import './Items.css';

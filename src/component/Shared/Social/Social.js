@@ -26,6 +26,7 @@ const Social = () => {
       return <Loading></Loading>
     }
     if (user) {
+      console.log(user.user.email)
       navigate(from, { replace: true });
     }
     return (
@@ -36,6 +37,7 @@ const Social = () => {
                 </div>
 
             </div>
+
         </div>
     );
 };

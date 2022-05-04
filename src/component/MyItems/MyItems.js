@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-import ManageSingleItem from '../ManageSingleItem/ManageSingleItem';
-import './ManageInventory.css';
+import auth from '../../firebase.init';
+import DisplayMyItem from '../DisplayMyItem/DisplayMyItem';
+import './MyItems.css';
 
-const ManageInventory = () => {
+const MyItems = () => {
     const [items, setItems] = useState([]);
-    
+    const [user] = useAuthState(auth);
+    const email = user.email;
     useEffect(() => {
-        const url = `http://localhost:5000/item`;
+        const url = `http://localhost:5000/myItem?email=${email}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setItems(data))
-    }, [])
+    }, [email])
     console.log(items, setItems)
+    
 
     const handleItemDelete = id =>{
         const confirmation = window.confirm('Are you sure to delete this item?');
+        
         if(confirmation){
             const url = `http://localhost:5000/item/${id}`;
             fetch (url, {
@@ -36,11 +41,11 @@ const ManageInventory = () => {
             <h2 className='my-4'>Manage Inventory</h2>
             <div className="row  row-cols-1 row-cols-md-3 g-4">
                 {
-                    items.map((item) => <ManageSingleItem 
+                    items.map((item) => <DisplayMyItem 
                     key={item._id}
                     item={item}
                     handleItemDelete = {handleItemDelete}
-                    ></ManageSingleItem>
+                    ></DisplayMyItem>
                     )
                 }
             </div>
@@ -53,4 +58,4 @@ const ManageInventory = () => {
     );
 };
 
-export default ManageInventory;
+export default MyItems;

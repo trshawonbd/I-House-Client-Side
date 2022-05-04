@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './ManageSingleItem.css';
 
-const ManageSingleItem = (props) => {
+const DisplayMyItem = (props) => {
     const {_id, productName, price, quantity, image, supplier, description} = props.item;
     const {handleItemDelete} = props;
     const [showMore, setShowMore] = useState(false);
@@ -32,4 +31,4 @@ const ManageSingleItem = (props) => {
     );
 };
 
-export default ManageSingleItem;
+export default DisplayMyItem;
