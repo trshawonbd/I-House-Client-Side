@@ -23,7 +23,7 @@ const AddItem = () => {
         const product = {email, productName, price, quantity, image, supplier, description};
 
         console.log(product);
-        const url = `http://localhost:5000/item`;
+        const url = `https://intense-tor-77999.herokuapp.com/item`;
         fetch(url, {
             method: 'POST',
             headers : {
@@ -59,7 +59,7 @@ const AddItem = () => {
                 <br />
                 <input className='password' type="text" name="supplier" id="" placeholder='Supplier Name' required />
                 <br />
-                <textarea className='password' name="description" id="" rows="5" cols="40"  placeholder='Description' required></textarea>
+                <textarea className='password' name="description" id="" rows="5" cols="30"  placeholder='Description' required></textarea>
                 
                 <br />
                 

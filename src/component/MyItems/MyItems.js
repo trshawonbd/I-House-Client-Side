@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -12,15 +13,36 @@ const MyItems = () => {
    
     const navigate = useNavigate();
     useEffect(() => {
-        const email = user?.email;
-        const url = `http://localhost:5000/myItem?email=${email}`;
-        /* try{ */
-            fetch(url/* ,
+        const getItems = async() =>{
+            const email = user?.email;
+            const url = `https://intense-tor-77999.herokuapp.com/myItem?email=${email}`;
+            try{
+                const {data} = await axios.get(url, {
+                    headers: {
+                        authorization : `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setItems(data);
+            }
+            catch(error){
+                console.log(error.message);
+                if(error.response.status === 401 || error.response.status ===403){
+                    signOut(auth);
+                    navigate('/login');
+                } 
+            }
+        }
+        getItems();
+    } , [user])
+        
+        
+        /* try{ 
+            fetch(url ,
                 {
                     headers: {
                         authorization : `Bearer ${localStorage.getItem('accessToken')}`
                     }
-                }*/) 
+                }) 
             .then(res => res.json())
             .then(data => setItems(data))
 
@@ -31,8 +53,8 @@ const MyItems = () => {
                 signOut(auth);
                 navigate('/login');
             } 
-        }
-    }*/, [user])
+        }}*/
+    
     console.log(items, setItems)
     
 
@@ -40,7 +62,7 @@ const MyItems = () => {
         const confirmation = window.confirm('Are you sure to delete this item?');
         
         if(confirmation){
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
             fetch (url, {
                 method: 'DELETE',
             })

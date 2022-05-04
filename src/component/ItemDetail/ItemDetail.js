@@ -16,7 +16,7 @@ const ItemDetail = () => {
     let { productName, price, quantity, image, supplier, description } = serviceDetail;
     useEffect(() => {
         
-        const url = `http://localhost:5000/item/${id}`;
+        const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setServiceDetail(data),
@@ -47,7 +47,7 @@ const ItemDetail = () => {
             /* const updateQuantity = { quantity : newQuantity}; */
             
             
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
                 method: 'PUT',
@@ -84,7 +84,7 @@ const ItemDetail = () => {
             const newService = {...serviceDetail, quantity : newQuantity};
             setServiceDetail(newService);
             
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
                 method: "PUT",
@@ -110,101 +110,6 @@ const ItemDetail = () => {
  
         
     }
-/* 
-        if(quantity > 0){
-            const updateQuantity = {quantity};
-           setNewState(updateQuantity);
-           console.log(newState) */
-      /*      const url = `http://localhost:5000/item/${id}`;
-
-           fetch(url, {
-               method: "PUT",
-               headers: {'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updateQuantity),
-            
-           })
-
-           .then(response => response.json())
-           .then(data => {
-            console.log('Success:', data);
-        
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        })
-        }
-        else{
-            toast("Please add atlease 1 quantity to restock")
-        }
-        quantityRef.current.value = '';
-
-    }  */
-/*     const handleDelivered = (id) => {
-
-        const newQuantity = (quantity - 1);
-
-        if (quantity > 0) {
-            
-            const updateQuantity = { quantity : newQuantity};
-            setNewState(updateQuantity)
-            const url = `http://localhost:5000/item/${id}`;
-
-            fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updateQuantity),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                })
-
-
-        }
-
-    }
-
-    const handleRestockQuantity =  (id) => { 
-        const getQuantity = quantityRef.current.value;
-        const quantityInInt = parseInt(getQuantity);
-        console.log(addQuantity)
-        const quantity = addQuantity + quantityInInt;
-
-        if(quantity > 0){
-            const updateQuantity = {quantity};
-           setNewState(updateQuantity);
-           console.log(newState)
-           const url = `http://localhost:5000/item/${id}`;
-
-           fetch(url, {
-               method: "PUT",
-               headers: {'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updateQuantity),
-            
-           })
-
-           .then(response => response.json())
-           .then(data => {
-            console.log('Success:', data);
-        
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        })
-        }
-        else{
-            toast("Please add atlease 1 quantity to restock")
-        }
-        quantityRef.current.value = '';
-
-    } */
 
 
     return (

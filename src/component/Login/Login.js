@@ -40,7 +40,7 @@ const Login = () => {
         return <Loading></Loading>
       }
       if (user) {
-        navigate(from, { replace: true });
+        //navigate(from, { replace: true });
       }
 
       const handleLogin = async event =>{
@@ -48,6 +48,10 @@ const Login = () => {
           const email = event.target.email.value;
           const password = event.target.password.value;
           await signInWithEmailAndPassword(email, password);
+          const {data} = await axios.post(`https://intense-tor-77999.herokuapp.com/login`, {email});
+          console.log(data);
+          localStorage.setItem('accessToken', data.accessToken);
+          navigate(from, { replace: true });
           event.target.reset();
             /* if(error){
                 toast('fskn')
@@ -56,7 +60,7 @@ const Login = () => {
               const email = event.target.email.value;
               const password = event.target.password.value;
               await signInWithEmailAndPassword(email, password);
-              /* const {data} = await axios.post(`http://localhost:5000/login`, {email}); 
+              /* const {data} = await axios.post(`https://intense-tor-77999.herokuapp.com/login`, {email}); 
               localStorage.setItem('accessToken', data.accessToken);
               navigate(from, { replace: true });
               event.target.reset();

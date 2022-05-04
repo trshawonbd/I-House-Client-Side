@@ -29,7 +29,7 @@ const NabBar = () => {
                                 user && <>
                                 <Nav.Link as={Link} className= 'item' to='/manageInventory'>Inventory</Nav.Link>
                                 <Nav.Link as={Link} className= 'item' to='/addItem'>Add Items</Nav.Link>
-                                <Nav.Link as={Link} className= 'item' to='/myItems'>My Items</Nav.Link>
+                                <Nav.Link as={Link} className= 'item' to='/myItem'>My Items</Nav.Link>
                                 </>
 
                             }
