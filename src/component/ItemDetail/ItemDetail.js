@@ -239,6 +239,8 @@ const ItemDetail = () => {
                     <h3 className='my-4 card-title'>Restock Your: {productName}</h3>
                     <hr />
                     <div>
+                        <h5>Enter Your Quantity:</h5>
+                        <hr />
                         <input className='email' ref={quantityRef} type="text" name="quantity" id="" placeholder='Quantity' required />
                         <br />
                         <button  onClick={() => handleRestockQuantity(_id)}  className='login' type="submit" value="Restock Quantity">Restock Quantity</button>

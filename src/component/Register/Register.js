@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Social from '../Shared/Social/Social';
 import './Register.css';
 import register from '../../img/Login/register.png'
@@ -7,7 +7,8 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 const Register = () => {
@@ -17,6 +18,9 @@ const Register = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+      const navigate = useNavigate();
+      const location = useLocation();
+      let from = location.state?.from?.pathname || "/";
 
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
@@ -31,7 +35,7 @@ const Register = () => {
         return <Loading></Loading>;
       }
       if (user) {
-        console.log(user);
+        navigate(from, { replace: true });;
       }
 
     const handleRegister = async(event) =>{
@@ -44,7 +48,7 @@ const Register = () => {
         if (password === confirmPassword){
           await  createUserWithEmailAndPassword(email, password);
           await updateProfile ({displayName : name});
-            toast('account created');
+           toast('account created');
         }
         else{
             toast("Your Password and ConfirmPassword didn't match");  
@@ -72,7 +76,10 @@ const Register = () => {
                         <p>You have already  any account? <Link className='login-text' to='/login'>Login</Link> </p>
                         
                         <input  className='login' type="submit" value="Register" />
+                        
                     </form>
+                    <ToastContainer></ToastContainer>
+                    
                 </div>
                 <div className='d-flex justify-content-center align-items-center'>
                 <span className='hr-dividor'>

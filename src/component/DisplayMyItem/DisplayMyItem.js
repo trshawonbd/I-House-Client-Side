@@ -1,3 +1,5 @@
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 const DisplayMyItem = (props) => {
@@ -24,7 +26,7 @@ const DisplayMyItem = (props) => {
                             {showMore ? 'Read Less' : 'Read More'} 
                             </button>  </p>
                 <hr />
-                <button onClick={() => handleItemDelete(_id)} className='login'>Remove</button>
+                <button onClick={() => handleItemDelete(_id)} className='login'>Remove <FontAwesomeIcon className='icon' icon={faTrash}></FontAwesomeIcon></button>
             </div>
         </div>
     </div>

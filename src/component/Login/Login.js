@@ -22,18 +22,18 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
-      
+      let errorContainer;
       const [sendPasswordResetEmail, resetSending, resetError] = useSendPasswordResetEmail(
         auth
       );
     let from = location.state?.from?.pathname || "/";
+
+    
     if (error || resetError) {
-        return (
-          <div>
-            <p>Error: {error.message}</p>
-          </div>
-        );
+          errorContainer = <p className='text-danger'>Error: {error.message}</p>
       }
+
+
       if (loading || resetSending) {
         return <Loading></Loading>
       }
@@ -44,8 +44,7 @@ const Login = () => {
       const handleLogin = event =>{
           event.preventDefault();
           const email = event.target.email.value;
-          const password = event.target.password.value;
-
+          const password = event.target.password.value;         
           signInWithEmailAndPassword(email, password)
           event.target.reset();
       }
@@ -80,6 +79,7 @@ const Login = () => {
 
                         <input className='login' type="submit" value="Login" />
                     </form>
+                    {errorContainer}
                     <p>You don't have any account? <Link className='login-text' to='/register'>Register</Link> </p>
                     <p>Forget Password? <button  
                          onClick={resetPassword}

@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react';
 import './ManageSingleItem.css';
 
@@ -16,7 +18,7 @@ const ManageSingleItem = (props) => {
                 <hr />
                 <h5 className='card-quantity'>Available: {quantity}</h5>
                 <hr />
-                <h5 className='card-supplier'>Supplier: <span className='supplier'>{supplier}</span></h5>
+                <h5 className='card-supplier '>Supplier: <span className='supplier'>{supplier}</span></h5>
                 <hr />
 
                 <p className="card-text"> {showMore ? description : `${description.slice(0,100)}`
@@ -25,7 +27,7 @@ const ManageSingleItem = (props) => {
                             {showMore ? 'Read Less' : 'Read More'} 
                             </button>  </p>
                 <hr />
-                <button onClick={() => handleItemDelete(_id)} className='login'>Remove</button>
+                <button onClick={() => handleItemDelete(_id)} className='login'>Remove <FontAwesomeIcon className='icon' icon={faTrash}></FontAwesomeIcon> </button>
             </div>
         </div>
     </div>
