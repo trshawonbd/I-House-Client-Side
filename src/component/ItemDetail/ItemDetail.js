@@ -16,7 +16,7 @@ const ItemDetail = () => {
     let { productName, price, quantity, image, supplier, description } = serviceDetail;
     useEffect(() => {
         
-        const url = `http://localhost:5000/item/${id}`;
+        const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setServiceDetail(data),
@@ -47,7 +47,7 @@ const ItemDetail = () => {
             /* const updateQuantity = { quantity : newQuantity}; */
             
             
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
                 method: 'PUT',
@@ -84,7 +84,7 @@ const ItemDetail = () => {
             const newService = {...serviceDetail, quantity : newQuantity};
             setServiceDetail(newService);
             
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
                 method: "PUT",
@@ -115,7 +115,7 @@ const ItemDetail = () => {
             const updateQuantity = {quantity};
            setNewState(updateQuantity);
            console.log(newState) */
-      /*      const url = `http://localhost:5000/item/${id}`;
+      /*      const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
            fetch(url, {
                method: "PUT",
@@ -148,7 +148,7 @@ const ItemDetail = () => {
             
             const updateQuantity = { quantity : newQuantity};
             setNewState(updateQuantity)
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
                 method: 'PUT',
@@ -180,7 +180,7 @@ const ItemDetail = () => {
             const updateQuantity = {quantity};
            setNewState(updateQuantity);
            console.log(newState)
-           const url = `http://localhost:5000/item/${id}`;
+           const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
            fetch(url, {
                method: "PUT",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 import './AddItem.css';
@@ -23,7 +23,7 @@ const AddItem = () => {
         const product = {email, productName, price, quantity, image, supplier, description};
 
         console.log(product);
-        const url = `http://localhost:5000/item`;
+        const url = `https://intense-tor-77999.herokuapp.com/item`;
         fetch(url, {
             method: 'POST',
             headers : {
@@ -67,6 +67,7 @@ const AddItem = () => {
                 <input className='login' type="submit" value="Add Item" />
                 <ToastContainer></ToastContainer>
             </form>
+            
             
         </div>
     );

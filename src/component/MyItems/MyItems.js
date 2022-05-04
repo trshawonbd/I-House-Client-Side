@@ -1,6 +1,7 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import DisplayMyItem from '../DisplayMyItem/DisplayMyItem';
 import './MyItems.css';
@@ -8,13 +9,30 @@ import './MyItems.css';
 const MyItems = () => {
     const [items, setItems] = useState([]);
     const [user] = useAuthState(auth);
-    const email = user.email;
+   
+    const navigate = useNavigate();
     useEffect(() => {
-        const url = `http://localhost:5000/myItem?email=${email}`;
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setItems(data))
-    }, [email])
+        const email = user?.email;
+        const url = `https://intense-tor-77999.herokuapp.com/myItem?email=${email}`;
+        try{
+            fetch(url,
+                {
+                    headers: {
+                        authorization : `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+            .then(res => res.json())
+            .then(data => setItems(data))
+
+        }
+        catch(error){
+            console.log(error.message);
+            if(error.response.status === 401 || error.response.status ===403){
+                signOut(auth);
+                navigate('/login');
+            }
+        }
+    }, [user])
     console.log(items, setItems)
     
 
@@ -22,7 +40,7 @@ const MyItems = () => {
         const confirmation = window.confirm('Are you sure to delete this item?');
         
         if(confirmation){
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
             fetch (url, {
                 method: 'DELETE',
             })

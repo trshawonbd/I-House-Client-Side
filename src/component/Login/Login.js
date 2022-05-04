@@ -10,6 +10,7 @@ import Loading from '../Shared/Loading/Loading';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -28,9 +29,10 @@ const Login = () => {
       );
     let from = location.state?.from?.pathname || "/";
 
-    
+
     if (error || resetError) {
-          errorContainer = <p className='text-danger'>Error: {error.message}</p>
+      console.log(error)
+      errorContainer =  <p className='text-danger'>Error: {error.message}</p>
       }
 
 
@@ -38,15 +40,30 @@ const Login = () => {
         return <Loading></Loading>
       }
       if (user) {
-        navigate(from, { replace: true });
+        
       }
 
-      const handleLogin = event =>{
+      const handleLogin = async event =>{
           event.preventDefault();
-          const email = event.target.email.value;
-          const password = event.target.password.value;         
-          signInWithEmailAndPassword(email, password)
-          event.target.reset();
+ 
+
+            if(error){
+                toast('fskn')
+            }
+            else{
+              const email = event.target.email.value;
+              const password = event.target.password.value;
+              await signInWithEmailAndPassword(email, password);
+              const {data} = await axios.post(`https://intense-tor-77999.herokuapp.com/login`, {email});
+              localStorage.setItem('accessToken', data.accessToken);
+              navigate(from, { replace: true });
+              event.target.reset();
+            }
+            
+          
+          
+
+
       }
 
       const resetPassword = async(event) => {
