@@ -1,0 +1,29 @@
+.about-title{
+    padding: 50px;
+    font-size: 80px;
+}
+
+.about-title-des{
+    padding: 50px;
+    font-size: 30px;
+    color: #a045eb;
+}
+
+
+.contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-title-title{
+    color: #FB7B6F;
+
+    font-size: 40px;
+}
+
+.card-text-about{
+    color: #00C3D7 ;
+}
+

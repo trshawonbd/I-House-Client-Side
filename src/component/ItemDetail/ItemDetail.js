@@ -60,6 +60,7 @@ const ItemDetail = () => {
                 .then(data => {
                     
                     console.log('Success:', data);
+                    
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -74,6 +75,7 @@ const ItemDetail = () => {
     } 
 
     const handleRestockQuantity =  (id) => { 
+        
         const getQuantity = quantityRef.current.value;
         const quantityInInt = parseInt(getQuantity);
         console.log(quantityInInt)
@@ -83,6 +85,7 @@ const ItemDetail = () => {
         if (newQuantity >0){
             const newService = {...serviceDetail, quantity : newQuantity};
             setServiceDetail(newService);
+            
             
             const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
@@ -97,8 +100,12 @@ const ItemDetail = () => {
             .then(response => response.json())
             .then(data => {
              console.log('Success:', data);
+             
+             
          
-         })
+         }
+         
+         )
          .catch((error) => {
              console.error('Error:', error);
          })
@@ -137,6 +144,7 @@ const ItemDetail = () => {
                         <button  onClick={() => handleDelivered(_id)}  className='login'>Delivered</button>
                         <ToastContainer></ToastContainer>
                     </div>
+                    
 
 
                 </div>

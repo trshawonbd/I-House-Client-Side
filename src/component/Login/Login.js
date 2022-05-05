@@ -33,8 +33,8 @@ const Login = () => {
 
 
     if (error || resetError) {
-      console.log(error)
-      errorContainer =  <p className='text-danger'>Error: {error.message}</p>
+      toast(`${error.message}`)
+      errorContainer =  <p className='text-danger'>{error.message}</p>
       }
 
 
@@ -84,7 +84,10 @@ const Login = () => {
                         <br />
 
                         <input className='login' type="submit" value="Login" />
+                        
                     </form>
+                    
+                    
                     {errorContainer}
                     <p>You don't have any account? <Link className='login-text' to='/register'>Register</Link> </p>
                     <p>Forget Password? <button  
@@ -98,8 +101,11 @@ const Login = () => {
                     <hr />
                 </span>
                 </div>
+                
                 <Social></Social>
                 <ToastContainer></ToastContainer>
+                
+                
 
 
             </div>

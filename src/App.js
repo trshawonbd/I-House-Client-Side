@@ -15,6 +15,7 @@ import ItemDetail from './component/ItemDetail/ItemDetail';
 import MyItems from './component/MyItems/MyItems';
 import { ToastContainer } from 'react-toastify';
 import Blog from './component/Blog/Blog';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path='/register' element = {<Register></Register>}></Route>
         <Route path='*' element = {<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
         
     </div>
   );

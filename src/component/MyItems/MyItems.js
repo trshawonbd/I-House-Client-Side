@@ -35,25 +35,6 @@ const MyItems = () => {
         getItems();
     } , [user])
         
-        
-        /* try{ 
-            fetch(url ,
-                {
-                    headers: {
-                        authorization : `Bearer ${localStorage.getItem('accessToken')}`
-                    }
-                }) 
-            .then(res => res.json())
-            .then(data => setItems(data))
-
-        }
-        /* catch(error){
-            console.log(error.message);
-            if(error.response.status === 401 || error.response.status ===403){
-                signOut(auth);
-                navigate('/login');
-            } 
-        }}*/
     
     console.log(items, setItems)
     

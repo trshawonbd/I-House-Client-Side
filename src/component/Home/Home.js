@@ -21,7 +21,7 @@ const Home = () => {
             <ChooseUs></ChooseUs>
             <Join></Join>
             <Features></Features>
-            <Footer></Footer>
+            
             
         </div>
     );
