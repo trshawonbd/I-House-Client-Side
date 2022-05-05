@@ -26,13 +26,14 @@ const ChooseUs = () => {
                     </div>
                 </div>
 
+ 
                 <div className="row my-4">
                     
 
-                    <div className="col-md-6 ">
-                        <img className='choose-pic' src= {choose2} alt="" srcset="" />
+                    <div className="col-md-6 d-flex flex-column justify-content-center align-items-center ">
+                        <img className='choose-pic img-fluid' src= {choose2} alt="" srcset="" />
                     </div>
-                    <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
+                    <div className="col-md-6">
                     <h3 className='mb-3'>Meet the Team
                         </h3>
                         <p className=' text'>
