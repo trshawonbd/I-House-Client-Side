@@ -34,21 +34,35 @@ Open [https://i-house-7d97b.web.app/](https://i-house-7d97b.web.app/) to view it
         <summary> JWT (JSON Web Token) </summary>
         <summary> env </summary>
 </details>
-    <summary>CLIENT</summary>
-        * React
-        * React router
-        * Bootstrap
-        * React Bootstrap
-        * React Awesome
-        * React Toastify
-        * Axios
+<details>
+<summary>CLIENT</summary>
+        <summary> express </summary>
+        <summary> React </summary>
+        <summary> React router </summary>
+        <summary> Bootstrap </summary>
+        <summary> React Bootstrap </summary>
+        <summary> React Awesome </summary>
+        <summary> React Toastify </summary>
+        <summary> Axios </summary>
+        <summary> env </summary>
+</details>
+<details>
+<summary>AUTHENTICATION</summary>
+        <summary> Firebase </summary>
+        <summary> React-firebase-hooks </summary>
+        <summary> env </summary>
+</details>
 
-    <summary>AUTHENTICATION</summary>
-        * Firebase
-        * React-firebase-hooks
-        * env
-    <summary>DATABASE</summary>
-        * Atlas
-        * Mongodb
-        * env
+<details>
+<summary>SERVER</summary>
+        <summary> Atlas </summary>
+        <summary> Mongodb </summary>
+        <summary> env </summary>
+</details>
+<details>
+<summary>Deployment</summary>
+        <summary> Firbase </summary>
+        <summary> Heroku </summary>
+</details>
+
 
