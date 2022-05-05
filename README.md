@@ -26,8 +26,8 @@ Open [https://i-house-7d97b.web.app/](https://i-house-7d97b.web.app/) to view it
 ### Tech Stack
 
 <details>
-    <summary>SERVER</summary>
-         <summary> express </summary>
+<summary>SERVER</summary>
+        <summary> express </summary>
          <summary> Node JS </summary>
         * CORS
         * Middleware
