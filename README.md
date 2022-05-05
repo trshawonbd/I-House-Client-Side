@@ -27,7 +27,7 @@ Open [https://i-house-7d97b.web.app/](https://i-house-7d97b.web.app/) to view it
 
 <details>
     <summary>SERVER</summary>
-        * express
+    <summary> express </summary>
         * Node JS
         * CORS
         * Middleware
