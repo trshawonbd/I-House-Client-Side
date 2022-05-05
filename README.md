@@ -27,12 +27,13 @@ Open [https://i-house-7d97b.web.app/](https://i-house-7d97b.web.app/) to view it
 
 <details>
 <summary>SERVER</summary>
-        - Stock tracking
-- Manage Suppliers
-        * CORS
-        * Middleware
-        * JWT (JSON Web Token)
-        * env
+        <summary> express </summary>
+        <summary> Node JS </summary>
+        <summary> CORS </summary>
+        <summary> Middleware </summary>
+        <summary> JWT (JSON Web Token) </summary>
+        <summary> env </summary>
+</details>
     <summary>CLIENT</summary>
         * React
         * React router
@@ -50,4 +51,4 @@ Open [https://i-house-7d97b.web.app/](https://i-house-7d97b.web.app/) to view it
         * Atlas
         * Mongodb
         * env
-</details>
+
