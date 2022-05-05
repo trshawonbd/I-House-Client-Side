@@ -27,8 +27,8 @@ Open [https://i-house-7d97b.web.app/](https://i-house-7d97b.web.app/) to view it
 
 <details>
     <summary>SERVER</summary>
-    <summary> express </summary>
-        * Node JS
+        <summary> express </summary>
+        <summary> Node JS </summary>
         * CORS
         * Middleware
         * JWT (JSON Web Token)
