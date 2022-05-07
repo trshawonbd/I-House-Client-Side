@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -6,47 +5,26 @@ import './ItemDetail.css';
 
 const ItemDetail = () => {
     const [serviceDetail, setServiceDetail] = useState({});
-    
     const quantityRef = useRef('');
-
-
     const param = useParams();
     const { id } = param;
     const {_id} = serviceDetail
     let { productName, price, quantity, image, supplier, description } = serviceDetail;
     useEffect(() => {
-        
         const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setServiceDetail(data),
-            
-            
             )
-            
-    }
+    } , [id,quantity])
+        
     
-        , [id,quantity])
-        
 
-        
-     const handleDelivered = (id) => {
-        
-        /* quantity =newState */
-        
-        
+     const handleDelivered = (id) => {        
         const newQuantity = (quantity - 1);
-        
-        
-
         if (newQuantity >= 0) {
-            /* setNewState(newQuantity) */
             const newService = {...serviceDetail, quantity: newQuantity}
             setServiceDetail(newService);
-            
-            /* const updateQuantity = { quantity : newQuantity}; */
-            
-            
             const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
@@ -65,8 +43,6 @@ const ItemDetail = () => {
                 .catch((error) => {
                     console.error('Error:', error);
                 }) 
-
-
         }
         else{
             toast(`${productName} is sold out`);
@@ -85,8 +61,6 @@ const ItemDetail = () => {
         if (newQuantity >0){
             const newService = {...serviceDetail, quantity : newQuantity};
             setServiceDetail(newService);
-            
-            
             const url = `https://intense-tor-77999.herokuapp.com/item/${id}`;
 
             fetch(url, {
@@ -100,12 +74,7 @@ const ItemDetail = () => {
             .then(response => response.json())
             .then(data => {
              console.log('Success:', data);
-             
-             
-         
-         }
-         
-         )
+         })
          .catch((error) => {
              console.error('Error:', error);
          })
@@ -114,8 +83,6 @@ const ItemDetail = () => {
              toast("Please add atlease 1 quantity to restock")
          }
          quantityRef.current.value = '';
- 
-        
     }
 
 
@@ -159,8 +126,6 @@ const ItemDetail = () => {
                         <button  onClick={() => handleRestockQuantity(_id)}  className='login' type="submit" value="Restock Quantity">Restock Quantity</button>
                         <ToastContainer></ToastContainer>
                     </div>
-
-
                 </div>
             </div>
             

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 import './AddItem.css';
@@ -60,15 +59,10 @@ const AddItem = () => {
                 <input className='password' type="text" name="supplier" id="" placeholder='Supplier Name' required />
                 <br />
                 <textarea className='password' name="description" id="" rows="5" cols="30"  placeholder='Description' required></textarea>
-                
                 <br />
-                
-
                 <input className='login' type="submit" value="Add Item" />
                 <ToastContainer></ToastContainer>
             </form>
-            
-            
         </div>
     );
 };

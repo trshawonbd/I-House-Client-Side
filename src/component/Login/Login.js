@@ -1,16 +1,13 @@
 import React, { useRef } from 'react';
 import './Login.css';
 import login from '../../img/Login/login.gif';
-import { Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Social from '../Shared/Social/Social';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
-import axios from 'axios';
 import useToken from '../Hooks/useToken';
 
 const Login = () => {
@@ -26,6 +23,7 @@ const Login = () => {
       ] = useSignInWithEmailAndPassword(auth);
       const [token] = useToken(user);
       let errorContainer;
+
       const [sendPasswordResetEmail, resetSending, resetError] = useSendPasswordResetEmail(
         auth
       );
@@ -41,6 +39,8 @@ const Login = () => {
       if (loading || resetSending) {
         return <Loading></Loading>
       }
+
+
       if (token) {
         navigate(from, { replace: true });
       }
@@ -50,10 +50,9 @@ const Login = () => {
           const email = event.target.email.value;
           const password = event.target.password.value;
           await signInWithEmailAndPassword(email, password);
-
           event.target.reset();
-
       }
+
 
       const resetPassword = async(event) => {
         const email = emailRef.current.value;
@@ -64,7 +63,6 @@ const Login = () => {
         else{
             toast('please enter your email address');
         }
-
     }
 
     return (
@@ -82,9 +80,7 @@ const Login = () => {
                         <br  />
                         <input className='password' type="password" name="password" id="" placeholder='Password' required />
                         <br />
-
-                        <input className='login' type="submit" value="Login" />
-                        
+                        <input className='login' type="submit" value="Login" />            
                     </form>
                     
                     
@@ -101,13 +97,8 @@ const Login = () => {
                     <hr />
                 </span>
                 </div>
-                
                 <Social></Social>
                 <ToastContainer></ToastContainer>
-                
-                
-
-
             </div>
             
         </div>

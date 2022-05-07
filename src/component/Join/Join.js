@@ -17,7 +17,6 @@ const Join = () => {
                 <div className='container'>
                     <h4 className='text-start title'>Create Wish Lists</h4>
                     <p className='text'>Sign up to create private and public wish lists that you can share with family and friends. It’s also easy to organize your favorite gadgets into different collections, like gift guides, smart home products you love, and more.</p>
-
                 </div>
             </div>
             <div className='d-flex my-3'>
@@ -27,7 +26,6 @@ const Join = () => {
                 <div className='container'>
                     <h4 className='text-start title'>Get Product Notifications</h4>
                     <p className='text'>What do you do when you find a product that you love but aren't ready to buy? Simply create a notification! Click the three little dots by the buy now button and select Add Reminder to get notified. Receive a reminder when it's discounted, Black Friday, the next season, or any date you choose.</p>
-
                 </div>
             </div>
             <div className='d-flex my-3'>
@@ -37,10 +35,8 @@ const Join = () => {
                 <div className='container'>
                     <h4 className='text-start title'>Discover with Watch</h4>
                     <p className='text'>Now you can discover new products through our video feed. With Gadget Flow Watch, browse through your favorite categories and create playlists. Our endless selection of videos will have you discovering gadgets for hours.</p>
-
                 </div>
             </div>
-
         </div>
     );
 };
